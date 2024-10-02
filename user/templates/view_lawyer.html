@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+<style>
+.containera-wrapper {
+    display: flex;
+    background-color: #722f37;
+    justify-content: space-between;
+    padding: 30px; /* Adjust as needed */
+}
+.containera1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the center horizontally */
+    justify-content: flex-start; /* Align items to the start (top) vertically */
+    width: 100%; /* Ensure the container takes up the full width */
+    background-color: #ffffff;
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded rectangle shape */
+}
+ .containera2 {
+    flex: 0 0 60%; /* Adjust width of containers */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.containera1 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+
+.containera2 {
+    margin-left: 10px; /* Adjust space between containers */
+    color: #722F37;
+}
+.containera2 p {
+            color: #722F37; /* Set color code */
+            text-align: justify; /* Align text in justified format */
+        }
+.containera1 p {
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Left;
+}
+.containera1 b {
+    margin-bottom: 5px;
+    color: #000;
+    text-align: Left;
+}
+
+    .profilea {
+     text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.profilea-image {
+    width: 350px;
+    height:350px;
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom:40px; /* Add space between image and details */
+    object-fit: cover; /* Ensure the image covers the entire circle */
+}
+
+.detailsa h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Add space between name and other details */
+}
+
+.detailsa p {
+    justify-content;
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Center;
+}
+.name-label {
+    color: #722f37;
+}
+
+</style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header" class="wrapper">
+
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+               <li class="current"><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'view_law' %}">Laws</a></li>
+                <li><a href="{% url 'Lawyers' %}">Lawyers</a></li>
+                <li><a href="{% url 'view_court' %}">Courts</a></li>
+                <li><a href="{% url 'view_user_profile' %}">Profile</a></li>
+                <li><a href="{% url 'signout' %}">Logout</a></li>
+
+            </ul>
+        </nav>
+
+    </section>
+
+
+
+<!--main-->
+<section id="intro" class="wrapper style1">
+					<div class="title">Our Lawyers</div>
+<div class="containera-wrapper">
+    <!-- Containera 1: Name -->
+    <div class="containera1">
+        <div class="profilea">
+            <div class="detailsa">
+                <img src="{{ view_lawyer.image.url }}" alt="Profile Image" class="profilea-image">
+            </div>
+        </div>
+        <p><b class="name-label">Name:</b>  {{ view_lawyer.user.first_name }}</p>
+        <p><b class="name-label">Area Of Practice:</b>  {{ view_lawyer.aop }}</p>
+        <p><b class="name-label">Court Of Practice:</b>  {{ view_lawyer.cop }}</p>
+        <p><b class="name-label">E-mail:</b>  {{ view_lawyer.user.email }}</p>
+        <button type="submit" class="btn btn-primary"><a href="{% url 'contact_lawyer' view_lawyer.user.id %}">Contact Lawyer</a></button>
+    </div>
+
+    <!-- Container 2: Description -->
+    <div class="containera2">
+        <h2>Description</h2>
+        <p>{{ view_lawyer.description }}</p>
+
+    </div>
+</div>
+</section>
+
+    <!-- Footer -->
+    <section id="footer" class="wrapper">
+        <div class="title">Contact Us</div>
+        <div class="container">
+            <header class="style1">
+                <h2>Have questions or feedback?</h2>
+                <p>Feel free to reach out to us. We're here to help!</p>
+            </header>
+            <div class="row">
+                <div class="col-6 col-12-medium">
+                    <!-- Contact Form -->
+                    <section>
+                        <form method="post" action="#">
+                            <div class="row gtr-50">
+                                <div class="col-6 col-12-small">
+                                    <input type="text" name="name" id="contact-name" placeholder="Name" />
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <input type="text" name="email" id="contact-email" placeholder="Email" />
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="actions">
+                                        <li><input type="submit" class="style1" value="Send" /></li>
+                                        <li><input type="reset" class="style2" value="Reset" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+                <div class="col-6 col-12-medium">
+                    <!-- Contact -->
+                    <section class="feature-list small">
+                        <div class="row">
+                            <div class="col-6 col-12-small">
+                                <section>
+                                    <h3 class="icon solid fa-envelope">Email</h3>
+                                    <p>
+                                        <a href="#">info@legalportal.com</a>
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <section>
+                                    <h3 class="icon solid fa-phone">Phone</h3>
+                                    <p>
+                                        (123) 456-7890
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="copyright">
+                <ul>
+                    <li>&copy; Legal Portal.</li><li>Design: <a href="">anandhanshine</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+<style>
+.containera-wrapper {
+    display: flex;
+    background-color: #722f37;
+    justify-content: space-between;
+    padding: 30px; /* Adjust as needed */
+}
+.containera1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the center horizontally */
+    justify-content: flex-start; /* Align items to the start (top) vertically */
+    width: 100%; /* Ensure the container takes up the full width */
+    background-color: #ffffff;
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded rectangle shape */
+}
+ .containera2 {
+    flex: 0 0 60%; /* Adjust width of containers */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.containera1 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+
+.containera2 {
+    margin-left: 10px; /* Adjust space between containers */
+    color: #722F37;
+}
+.containera2 p {
+            color: #722F37; /* Set color code */
+            text-align: justify; /* Align text in justified format */
+        }
+.containera1 p {
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Left;
+}
+.containera1 b {
+    margin-bottom: 5px;
+    color: #000;
+    text-align: Left;
+}
+
+    .profilea {
+     text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.profilea-image {
+    width: 350px;
+    height:350px;
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom:40px; /* Add space between image and details */
+    object-fit: cover; /* Ensure the image covers the entire circle */
+}
+
+.detailsa h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Add space between name and other details */
+}
+
+.detailsa p {
+    justify-content;
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Center;
+}
+.name-label {
+    color: #722f37;
+}
+
+</style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header" class="wrapper">
+
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+               <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lawyer_view_laws' %}">Laws</a></li>
+                <li><a href="{% url 'view_clients' %}">Clients</a></li>
+                <li><a href="{% url 'view_lawyer_profile' %}">profile</a></li>
+                <li><a href="{% url 'lawyer_view_court' %}">Courts</a></li>
+                <li><a href="{% url 'signout' %}">Logout</a></li>
+
+            </ul>
+        </nav>
+
+    </section>
+
+</div>
+</body>
+</html>

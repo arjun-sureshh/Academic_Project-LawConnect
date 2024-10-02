@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleview.css' %}">
+<style>
+.containera-wrapper {
+    display: flex;
+    background-color: #722f37;
+    justify-content: space-between;
+    padding: 30px; /* Adjust as needed */
+}
+.containera1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the center horizontally */
+    justify-content: flex-start; /* Align items to the start (top) vertically */
+    width: 50%; /* Ensure the container takes up the full width */
+    background-color: #ffffff;
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded rectangle shape */
+}
+
+
+
+
+ .containera3 {
+    flex: 0 0 48%; /* Adjust width of containers */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.containera1 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+
+.containera3 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+.containera3 p {
+            color: #722F37; /* Set color code */
+            text-align: justify; /* Align text in justified format */
+        }
+.containera1 p {
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Left;
+}
+.containera1 b {
+    margin-bottom: 5px;
+    color: #000;
+    text-align: Left;
+}
+
+    .courta {
+     text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.courta-image {
+    width: 350px;
+    height:350px;
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom:40px; /* Add space between image and details */
+    object-fit: cover; /* Ensure the image covers the entire circle */
+}
+
+.detailsa h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Add space between name and other details */
+}
+
+.detailsa p {
+    justify-content;
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Center;
+}
+.name-label {
+    color: #722f37;
+}
+
+</style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header" class="wrapper">
+
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="{% url 'admin_home' %}">Home</a></li>
+                <li><a href="{% url 'addlaw' %}">Laws</a></li>
+                <li><a href="{% url 'view_all_lawyers' %}">Lawyers</a></li>
+                <li><a href="{% url 'addcourt' %}">Courts</a></li>
+                <li><a href="{% url 'admin_logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </section>
+
+
+
+<!--main-->
+<section id="intro" class="wrapper style1">
+					<div class="title">Court details</div>
+<div class="container-wrapper">
+<section class="ftco-section">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center">
+<!--					<h2 class="heading-section">Clients</h2>-->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+						  <thead>
+						    <tr>
+                                <th>Sl No.</th>
+<!--						    	<th>Action</th>-->
+                                <th>law_section</th>
+						    	<th>description</th>
+						        <th>penalty</th>
+								<th>category</th>
+						        <th>amendment_details</th>
+                                <th>provisions</th>
+                                <th>year_enacted</th>
+                                <th>applicability</th>
+                                <th>action</th>
+<!--						      <th>&nbsp;</th>-->
+						    </tr>
+						  </thead>
+						  <tbody>
+                          {% for l in view_all_law %}
+						    <tr class="alert" role="alert">
+                                <td>{{ forloop.counter }}</td>
+<!--						    	<td>-->
+<!--						    		<label class="checkbox-wrap checkbox-primary">-->
+<!--										  <input type="checkbox" checked>-->
+<!--										  <span class="checkmark"></span>-->
+<!--										</label>-->
+<!--						    	</td>-->
+<!--						      <td class="d-flex align-items-center">-->
+<!--						      	<div class="img" style="background-image: url({{ c.image.url }});"></div>-->
+<!--						      </td>-->
+						      <td>{{ l.law_section }}</td>
+                                 <td>{{ l.description }} </td>
+								<td>{{ l.penalty }} </td>
+                                <td>{{ l.category }} </td>
+                                <td>{{ l.amendment_details }} </td>
+                                <td>{{ l.provisions }} </td>
+                                <td>{{ l.year_enacted }} </td>
+                                <td>{{ l.applicability }} </td>
+						      <td>
+								  <button type="button" class="btn btn-primary btn-sm"><a href="{% url 'edit_law' %}?id={{l.id}}">edit</a></button>
+                                  <button type="button" class="btn btn-danger btn-sm"><a href="{% url 'delete_law' %}?id={{l.id}}">delete</a></button>
+
+				        	</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						    </tr>
+                           {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</section>
+
+
+
+
+
+    <!-- Footer -->
+
+</div>
+</body>
+</html>

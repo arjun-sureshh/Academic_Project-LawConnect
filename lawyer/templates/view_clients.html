@@ -1,0 +1,114 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{% static 'css/styleview.css' %}">
+<style>
+	  .containerm {
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .chat-containerm {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px; /* Adjust height as needed */
+    overflow-y: auto;
+  }
+
+  .messagem {
+    max-width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e6e6e6;
+  }
+
+  .message.leftm {
+    align-self: flex-start;
+    background-color: #d3e7fd;
+  }
+
+  .message.rightm {
+    align-self: flex-end;
+    background-color: #cdfdd3;
+  }
+</style>
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Clients</h2>
+				</div>
+			</div>
+			{% for c in clients %}
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+						  <thead>
+						    <tr>
+						    	<th>&nbsp;</th>
+						    	<th>Email</th>
+						      <th>Username</th>
+								<th>Matter</th>
+						      <th>Complaint</th>
+						      <th>&nbsp;</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr class="alert" role="alert">
+
+						      <td class="d-flex align-items-center">
+						      	<div class="img" style="background-image: url(images/person_1.jpg);"></div>
+						      	<div class="pl-3 email">
+						      		<span>{{ c.user.username }}</span>
+						      	</div>
+						      </td>
+						      <td>{{ c.user.first_name }}</td>
+						      <td>{{ c.matter }} </td>
+								<td>{{ c.complaint }} </td>
+						      <td>
+								  <button type="submit" class="btn btn-primary"><a href="{% url 'user_requests' %}?id={{c.user.id}}">Reply</a></button>
+						      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
+				          	</button>
+				        	</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			------------------------------------------------------------------------
+
+			------------------------------------------------------------------------
+			{% endfor %}
+		</div>
+	</section>
+	<script src="{% static 'js/jquery2.min.js' %}"></script>
+  <script src="{% static 'js/popper2.js' %}"></script>
+  <script src="{% static 'js/bootstrap2.min.js' %}"></script>
+  <script src="{% static 'js/main2.js' %}"></script>
+
+	</body>
+</html>
+

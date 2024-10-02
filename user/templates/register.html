@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+      <style>
+     .background_wrapper::before{
+      background-image: url("{% static 'img/bg-img.jpg' %}");
+      }
+    </style>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <!-- BACKGROUND-WRAPPER -->
+    <main class="background_wrapper">
+      <div class="login_form_wrapper">
+        <!-- FORM -->
+        <form method="POST" class="form 1">
+          {% csrf_token %}
+          <h1 class="title">Sign Up</h1>
+
+          <div class="login_form_content">
+
+            <!-- LOGIN-CONTENT-BOX-1 -->
+            <div class="login_content_box">
+              <ion-icon name="person-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder=" "
+                  class="login__input email--input"
+                  required
+                />
+                <label for="name"  class="login__label">Full Name</label>
+              </div>
+            </div>
+            <!-- LOGIN-CONTENT-BOX-2 -->
+            <div class="login_content_box">
+              <ion-icon name="at-circle-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="email"
+                   name="email"
+                  placeholder=" "
+                  class="login__input email--input"
+                  required
+                />
+                <label for="email" class="login__label">Email</label>
+              </div>
+            </div>
+            <!-- LOGIN-CONTENT-BOX-4 -->
+            <div class="login_content_box">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="password"
+                  name="password1"
+                  placeholder=" "
+                  class="login__input password--input"
+                  required
+                />
+                <label for="password"  class="login__label">Password</label>
+                <ion-icon
+                  class="password__hidden"
+                  id="password_hidden"
+                  name="eye-off-outline"
+                ></ion-icon>
+              </div>
+            </div>
+           <!-- LOGIN-CONTENT-BOX-4 -->
+            <div class="login_content_box">
+              <ion-icon name="lock-closed"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="password"
+                  name="password2"
+                  placeholder=" "
+                  class="login__input password--input"
+                  required
+                />
+                <label for="password"  class="login__label">Confirm Password</label>
+                <ion-icon
+                  class="password__hidden"
+                  id="password_hidden"
+                  name="eye-off"
+                ></ion-icon>
+              </div>
+            </div>
+            <!-- LOGIN BUTTON -->
+            <button class="button__login">Sign Up</button>
+          </div>
+         <p class="register__login text--sm">
+              Already Have an account <a href="{% url 'login' %}">Sign in</a>
+            </p>
+          {% if messages %}
+                {% for m in messages %}
+                <b style="color: red; margin-top: 40px; font-size: 20px;"> {{ m }} </b>
+                {% endfor %}
+          {% endif %}
+        </form>
+      </div>
+    </main>
+
+    <!-- SCRIPT.JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/eyescript.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/main2.css' %}" />
+    <style>
+        #header{
+        background: url("{% static 'img/bg-001.png' %}") center top;
+        }
+    </style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header" class="wrapper">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="{% url 'index' %}">Legal Portal</a></h1>
+            <p>A platform to explore laws, lawyers, and courts</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'view_law' %}">Laws</a></li>
+                <li><a href="{% url 'Lawyers' %}">Lawyers</a></li>
+                <li><a href="{% url 'view_court' %}">Courts</a></li>
+                <li><a href="{% url 'view_user_profile' %}">Profile</a></li>
+                <li><a href="{% url 'signout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </section>
+
+    <!-- Intro -->
+    <section id="intro" class="wrapper style1">
+        <div class="title">Laws, Lawyers, and Courts</div>
+        <div class="container">
+            <p class="style1">Welcome to the Legal Portal!</p>
+            <p class="style2">
+                This platform provides comprehensive information about laws, lawyers, and courts.
+            </p>
+            <p class="style3">It's designed to be user-friendly and informative, helping you navigate the legal landscape with ease.</p>
+            <ul class="actions">
+                <li><a href="#" class="button style3 large">Proceed</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <section id="main" class="wrapper style2">
+        <div class="title">The Details</div>
+        <div class="container">
+
+            <!-- Image -->
+            <a href="#" class="image featured">
+                <img src="{% static 'img/pic000.png' %}" alt="" />
+            </a>
+
+            <!-- Features -->
+            <section id="features">
+                <header class="style1">
+                    <h2>Explore Laws, Lawyers, and Courts</h2>
+                    <p>Find detailed information about various legal aspects</p>
+                </header>
+                <div class="feature-list">
+                    <div class="row">
+                        <div class="col-6 col-12-medium">
+                            <section>
+                                <h3 class="icon fa-gavel">Laws</h3>
+                                <p>Discover the latest laws and regulations governing different areas.</p>
+                            </section>
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            <section>
+                                <h3 class="icon fa-user-tie">Lawyers</h3>
+                                <p>Explore profiles of experienced lawyers specializing in various fields.</p>
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+                <ul class="actions special">
+                    <li><a href="#" class="button style1 large">Get Started</a></li>
+                    <li><a href="#" class="button style2 large">More Info</a></li>
+                </ul>
+            </section>
+
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section id="highlights" class="wrapper style3">
+        <div class="title">Featured Content</div>
+        <div class="container">
+            <div class="row aln-center">
+                                <div class="col-4 col-12-medium">
+                    <section class="highlight">
+                        <a href="#" class="image featured"><img src="{% static 'img/1.png' %}" alt="" /></a>
+                        <h3><a href="#">Choosing the Right Lawyer</a></h3>
+                        <p>Get tips on selecting the best lawyer for your legal needs, ensuring effective representation.</p>
+                        <ul class="actions">
+                            <li><a href="#" class="button style1">Learn More</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <section class="highlight">
+                        <a href="#" class="image featured"><img src="{% static 'img/pic6.png' %}" alt="" /></a>
+                        <h3><a href="#">Court </a></h3>
+                        <p>Learn more about Courts every citizen should known.</p>
+                        <ul class="actions">
+                            <li><a href="#" class="button style1">Learn More</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

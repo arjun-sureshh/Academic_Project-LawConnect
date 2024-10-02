@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+     .background_wrapper::before{
+      background-image: url("{% static 'img/bg-img.jpg' %}");
+      }
+    </style>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+
+    <!-- BACKGROUND-WRAPPER -->
+    <main class="background_wrapper">
+
+      <div class="login_form_wrapper">
+        <!-- FORM -->
+        <form method="POST">  {% csrf_token %}
+          <h1 class="title">Login</h1>
+
+          <div class="login_form_content">
+            <!-- LOGIN-CONTENT-BOX-1 -->
+            <div class="login_content_box">
+              <ion-icon name="person-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="username"
+                  placeholder=" "
+                  name="username"
+                  class="login__input email--input"
+                  required
+                />
+                <label for="username" class="login__label">Username</label>
+              </div>
+            </div>
+            <!-- LOGIN-CONTENT-BOX-2 -->
+            <div class="login_content_box">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="password"
+                  placeholder=" "
+                  name="password1"
+                  class="login__input password--input"
+                  required
+                />
+                <label for="password" class="login__label">Password</label>
+                <ion-icon
+                  class="password__hidden"
+                  id="password_hidden"
+                  name="eye-off-outline"
+                ></ion-icon>
+              </div>
+            </div>
+            <div>
+              <!-- FORGET PASSWORD -->
+              <a href="{% url 'forgotp' %}" class="forget__login text--sm"></a>
+            </div>
+
+            <!-- LOGIN BUTTON -->
+            <button class="button__login">Login</button>
+            <!-- REGISTER LOGIN -->
+            <p class="register__login text--sm">
+              Don't have an account ? <a href="{% url 'signup' %}">Register</a>
+            </p>
+            {% if messages %}
+                {% for m in messages %}
+                <b style="color: red; margin-top: 40px; font-size: 20px;"> {{ m }} </b>
+                {% endfor %}
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- SCRIPT.JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

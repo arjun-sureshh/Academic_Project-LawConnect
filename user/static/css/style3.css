@@ -1,0 +1,385 @@
+/********** Template CSS **********/
+:root {
+    --primary: #722f37;
+    --light: #EFF5FF;
+    --dark: #722f37;
+}
+
+.fw-medium {
+    font-weight: 500 !important;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.fw-black {
+    font-weight: 900 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+
+ body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+
+.container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px; /* Adjust as needed */
+}
+.container8 {
+    flex: 0 0 35%; /* Adjust width of containers */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+ .container1 {
+    flex: 0 0 60%; /* Adjust width of containers */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container1 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+
+.container2 {
+    margin-left: 10px; /* Adjust space between containers */
+    color: #722F37;
+}
+.container2 p {
+            color: #722F37; /* Set color code */
+            text-align: justify; /* Align text in justified format */
+        }
+.container1 p {
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Center;
+}
+
+    .profile {
+     text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.profile-image {
+    width: 350px;
+    height:350px;
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom:40px; /* Add space between image and details */
+    object-fit: cover; /* Ensure the image covers the entire circle */
+}
+
+.details h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Add space between name and other details */
+}
+
+.details p {
+    margin-bottom: 5px;
+    color: #722F37;
+    text-align: Center;
+}
+
+    .form-group1 {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .form-group1 label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group1 input[type="text"],
+    .form-group1 select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .form-group1 textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        background-color: #722f37;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #5e242d;
+    }
+
+
+/*** Button ***/
+.btn {
+    font-weight: 500;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 10px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+btn-lg-round{
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+
+
+
+
+/*** Feature ***/
+@media (min-width: 992px) {
+    .container.feature {
+        max-width: 100% !important;
+    }
+
+    .feature-text  {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .feature-text  {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .feature-text  {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Team ***/
+.team-item img {
+    position: relative;
+    top: 0;
+    transition: .5s;
+}
+
+.team-item:hover img {
+    top: -30px;
+}
+
+.team-item .team-text {
+    position: relative;
+    height: 100px;
+    transition: .5s;
+}
+
+.team-item:hover .team-text {
+    margin-top: -60px;
+    height: 160px;
+}
+
+.team-item .team-text .team-social {
+    opacity: 0;
+    transition: .5s;
+}
+
+.team-item:hover .team-text .team-social {
+    opacity: 1;
+}
+
+.team-item .team-social .btn {
+    display: inline-flex;
+    color: var(--primary);
+    background: #FFFFFF;
+    border-radius: 40px;
+}
+
+.team-item .team-social .btn:hover {
+    color: #FFFFFF;
+    background: var(--primary);
+}
+
+
+/*** Appointment ***/
+.bootstrap-datetimepicker-widget.bottom {
+    top: auto !important;
+}
+
+.bootstrap-datetimepicker-widget .table * {
+    border-bottom-width: 0px;
+}
+
+.bootstrap-datetimepicker-widget .table th {
+    font-weight: 500;
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background: var(--primary);
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+    border-bottom-color: var(--primary);
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+.testimonial-carousel::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 300px;
+    }
+}
+
+.testimonial-carousel .owl-item .testimonial-text {
+    background: var(--light);
+    transform: scale(.8);
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text {
+    background: var(--primary);
+    transform: scale(1);
+}
+
+.testimonial-carousel .owl-item .testimonial-text *,
+.testimonial-carousel .owl-item .testimonial-item img {
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    color: var(--light) !important;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item img {
+    background: var(--primary) !important;
+} 
+
+.testimonial-carousel .owl-nav {
+    position: absolute;
+    width: 350px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transition: .5s;
+    z-index: 1;
+}
+
+.testimonial-carousel:hover .owl-nav {
+    width: 300px;
+    opacity: 1;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    position: relative;
+    color: var(--primary);
+    font-size: 45px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    color: var(--dark);
+}
+
+

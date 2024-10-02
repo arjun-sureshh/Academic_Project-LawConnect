@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <style>
+        .containera-wrapper {
+            display: flex;
+            background-color: #722f37;
+            justify-content: space-between;
+            padding-left: 470px; /* Adjust as needed */
+        }
+        .containera1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Align items to the center horizontally */
+            justify-content: flex-start; /* Align items to the start (top) vertically */
+            width: 50%; /* Ensure the container takes up the full width */
+            background-color: #ffffff;
+            padding: 20px; /* Add padding for spacing */
+            border-radius: 10px; /* Rounded rectangle shape */
+        }
+
+
+
+
+         .containera3 {
+            flex: 0 0 48%; /* Adjust width of containers */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .containera1 {
+            margin-right: 10px; /* Adjust space between containers */
+        }
+
+        .containera3 {
+            margin-right: 10px; /* Adjust space between containers */
+        }
+        .containera3 p {
+                    color: #722F37; /* Set color code */
+                    text-align: justify; /* Align text in justified format */
+                }
+        .containera1 p {
+            margin-bottom: 5px;
+            color: #722F37;
+            text-align: Left;
+        }
+        .containera1 b {
+            margin-bottom: 5px;
+            color: #000;
+            text-align: Left;
+        }
+
+            .courta {
+             text-align: center;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        .courta-image {
+            width: 350px;
+            height:350px;
+            border-radius: 50%; /* Make the image circular */
+            margin-bottom:40px; /* Add space between image and details */
+            object-fit: cover; /* Ensure the image covers the entire circle */
+        }
+
+        .detailsa h2 {
+            margin-top: 0;
+            margin-bottom: 10px; /* Add space between name and other details */
+        }
+
+        .detailsa p {
+            justify-content;
+            margin-bottom: 5px;
+            color: #722F37;
+            text-align: Center;
+        }
+        .name-label {
+            color: #722f37;
+        }
+
+    </style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header" class="wrapper">
+
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="{% url 'admin_home' %}">Home</a></li>
+                <li><a href="{% url 'addlaw' %}">Laws</a></li>
+                <li><a href="{% url 'view_all_lawyers' %}">Lawyers</a></li>
+                <li><a href="{% url 'addcourt' %}">Courts</a></li>
+                <li><a href="{% url 'admin_logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </section>
+
+
+    <!--main-->
+    <section id="intro" class="wrapper style1">
+        <div class="title">Court details</div>
+                <a style="background-color:orange;text-decoration:none;color:white;font-weight:bold;padding:10px;margin-left:40px;border-radius:5px;" href="{% url 'view_all_law' %}">View All Laws</a>
+
+        <center>
+        <form method="post" enctype="multipart/form-data">
+            <div class="containera-wrapper">
+                <!-- Containera 1: Name -->
+                <div class="containera1">
+
+                    <form action="submit_law_details.php" method="post">
+                        {% csrf_token %}
+                        <label for="law_section">Law Section (UPPER-CASE):</label>
+                        <input type="text" id="law_section" name="law_section" required>
+
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="description" required>
+
+                        <label for="category">Category:</label>
+                        <select id="category" name="category" required>
+                            <option value="Criminal">Criminal Law</option>
+                            <option value="Civil">Civil Law</option>
+                            <option value="Administrative">Administrative Law</option>
+                            <option value="Cyber">Cyber Law</option>
+                            <option value="Employment">Employment Law</option>
+
+                        </select>
+
+                        <label for="penalty">Penalty/Punishment:</label>
+                        <input type="text" id="penalty" name="penalty" required>
+
+                        <label for="amendment_details">Amendment Details:</label>
+                        <input type="text" id="amendment_details" name="amendment_details" required>
+
+                        <label for="year_enacted">Year Enacted:</label>
+                        <input type="text" id="year_enacted" name="year_enacted" required>
+
+                        <label for="provisions">Provisions:</label>
+                        <input type="text" id="provisions" name="provisions" required>
+
+                        <label for="applicability">Applicability:</label>
+                        <input type="text" id="applicability" name="applicability" required>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </form>
+            </center>
+    </section>
+
+
+    <!-- Footer -->
+
+</div>
+</body>
+</html>

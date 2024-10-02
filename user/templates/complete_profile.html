@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Login Form using HTML  CSS</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/lawyer_profile.css' %}">
+ <style>
+     .background_wrapper::before{
+      background-image: url("{% static 'img/bg-img1.png' %}");
+      }
+.background_wrapper {
+  position: relative;
+  width: 100%;
+  height: 120vh;
+</style>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <!-- BACKGROUND-WRAPPER -->
+    <main class="background_wrapper">
+      <div class="login_form_wrapper">
+        <!-- FORM -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          <h1 class="title">Complete Profile</h1>
+            <div class="Image_input">
+ <label for="Add Profile Picture" class="login__label">Add Profile Picture</label><br><br>
+  <label for="profilePicture" class="custom_file_button">
+    <ion-icon name="camera-outline"></ion-icon>
+  </label>
+  <input type="file" id="profilePicture" name="profile_img" accept="image/*">
+</div>
+
+          <div class="login_form_content">
+           <!-- LOGIN-CONTENT-BOX-1 -->
+            <div class="login_content_box">
+              <ion-icon name="home-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="address"
+                  class="login__input email--input"
+                  required
+                />
+                <label for="email" class="login__label">Address</label>
+              </div>
+            </div>
+               <!-- LOGIN-CONTENT-BOX-2 -->
+            <div class="login_content_box">
+              <ion-icon name="business-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  name="city"
+                  placeholder=" "
+                  class="login__input email--input"
+                  required
+                />
+                <label for="city" class="login__label">City</label>
+              </div>
+            </div>
+               <!-- LOGIN-CONTENT-BOX-3 -->
+            <div class="login_content_box">
+              <ion-icon name="earth-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="country"
+                  class="login__input email--input"
+                  required
+                />
+                <label for="email" class="login__label">Country</label>
+              </div>
+            </div>
+             <!-- LOGIN-CONTENT-BOX-4 -->
+            <div class="login_content_box">
+              <ion-icon name="swap-horizontal-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="zip"
+                  class="login__input email--input"
+                  required
+
+                />
+                <label for="email" class="login__label">Zip code</label>
+              </div>
+            </div>
+             <!-- LOGIN-CONTENT-BOX-5 -->
+            <div class="login_content_box">
+              <ion-icon name="call-outline"></ion-icon>
+
+              <div class="login_content_box--input">
+                <input
+                  type="tel"
+                  placeholder=" "
+                  name="mobile"
+                  class="login__input email--input"
+                  minlength="10"
+                  maxlength="10"
+                  required
+                />
+                <label for="email" class="login__label">Mobile</label>
+              </div>
+            </div>
+            <!-- LOGIN BUTTON -->
+            <button class="button__login">Submit</button>
+
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- SCRIPT.JS -->
+    <script src="./JS/script.js"></script>
+  </body>
+</html>

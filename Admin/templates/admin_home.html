@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/main2.css' %}" />
+    <style>
+        #header{
+        background: url("{% static 'img/bg-001.png' %}") center top;
+        }
+    </style>
+</head>
+<body class="homepage is-preload" style="background: url({% static 'img/bg-001.png' %})">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="{% url 'index' %}">Legal Portal</a></h1>
+            <p>A platform to explore laws, lawyers, and courts</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="{% url 'admin_home' %}">Home</a></li>
+                <li><a href="{% url 'addlaw' %}">Laws</a></li>
+                <li><a href="{% url 'view_all_lawyers' %}">Lawyers</a></li>
+                <li><a href="{% url 'addcourt' %}">Courts</a></li>
+                <li><a href="{% url 'admin_logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+<!--    </section>-->
+
+</div>
+
+<!-- Scripts -->
+</body>
+</html>
+

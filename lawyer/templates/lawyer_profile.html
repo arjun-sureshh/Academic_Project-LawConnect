@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile Form</title>
+<link rel="stylesheet" href="{% static 'css/lawyer_profile.css' %}">
+    <style>
+     .background_wrapper::before{
+      background-image: url("{% static 'img/bg5.jpg' %}");
+      }
+    </style>
+  <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+</head>
+<body>
+
+
+ <!-- BACKGROUND-WRAPPER -->
+    <main class="background_wrapper">
+      <div class="login_form_wrapper">
+<h1 class="title">Complete Your Profile</h1>
+<form method="POST" id="profileForm" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="Image_input">
+ <label for="Add Profile Picture" class="login__label">Add Profile Picture</label><br><br>
+  <label for="profilePicture" class="custom_file_button">
+    <ion-icon name="camera-outline"></ion-icon>
+  </label>
+  <input type="file" id="profilePicture" name="profile_img" accept="image/*">
+</div>
+
+
+ <!-- LOGIN-CONTENT-BOX-3 -->
+            <div class="login_content_box">
+              <ion-icon name="business-outline"></ion-icon>
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  name="license"
+                  placeholder=" "
+                  class="login__input email--input"
+                  required
+                />
+                <label for="city" class="login__label">License Number</label>
+              </div>
+            </div>
+
+    <div class="login_content_box">
+              <ion-icon name="business-outline"></ion-icon>
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  name="address"
+                  placeholder=" "
+                  class="login__input email--input"
+                  required
+                />
+                <label for="city" class="login__label">Address</label>
+              </div>
+            </div>
+
+
+               <!-- LOGIN-CONTENT-BOX-4 -->
+            <div class="login_content_box">
+              <ion-icon name="earth-outline"></ion-icon>
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="city"
+                  class="login__input email--input"
+                  required
+                />
+                <label for="email" class="login__label">City</label>
+              </div>
+            </div>
+
+
+             <!-- LOGIN-CONTENT-BOX-5 -->
+            <div class="login_content_box">
+              <ion-icon name="swap-horizontal-outline"></ion-icon>
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="cop"
+                  class="login__input email--input"
+                  required
+                />
+                <label for="email" class="login__label">Practicing Court</label>
+              </div>
+            </div>
+
+
+             <!-- LOGIN-CONTENT-BOX-6 -->
+            <div class="login_content_box">
+              <ion-icon name="call-outline"></ion-icon>
+              <div class="login_content_box--input">
+                <input
+                  type="tel"
+                  placeholder=" "
+                  name="mobile"
+                  class="login__input email--input"
+                  minlength="10"
+                  maxlength="10"
+                  required
+                />
+                <label for="email" class="login__label">Mobile</label>
+              </div>
+            </div>
+
+  <!-- LOGIN-CONTENT-BOX-7 -->
+            <div class="login_content_box">
+              <ion-icon name="call-outline"></ion-icon>
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="description"
+                  class="login__input email--input"
+
+                  required
+                />
+                <label for="email" class="login__label">Firm description</label>
+              </div>
+            </div>
+
+<!-- LOGIN-CONTENT-BOX-7 -->
+            <div class="login_content_box">
+<!--              <ion-icon name="call-outline"></ion-icon>-->
+              <div class="login_content_box--input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  name="aop"
+                  class="login__input email--input"
+                  required
+                />
+                <label for="email" class="login__label">Area of Practices</label>
+              </div>
+            </div>
+
+<div>
+            <!-- LOGIN BUTTON -->
+            <button class="button__login">Submit</button>
+</div>
+</form>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

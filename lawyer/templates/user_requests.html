@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <style>
+        /* Chat Container */
+.chat-container {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+	width: 1400px;
+    margin-left: 50px;
+}
+
+/* Chat Sidebar */
+.chat-sidebar {
+    background-color: #f8f9fa;
+}
+
+.chat-sidebar-users {
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+.chat-user {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.chat-user:hover {
+    background-color: #e9ecef;
+}
+
+.chat-user.active {
+    background-color: #e2e6ea;
+}
+
+.chat-user-avatar {
+    margin-right: 12px;
+}
+
+.chat-user-info {
+    flex-grow: 1;
+}
+
+/* Chat Messages */
+.chat-messages-container {
+    background-color: #fff;
+}
+
+.chat-header {
+    background-color: #f8f9fa;
+}
+
+.chat-messages {
+    height: calc(100vh - 300px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.chat-message-left {
+    justify-content: flex-start;
+}
+
+.chat-message-right {
+    justify-content: flex-end;
+}
+
+.chat-message-avatar {
+    margin-right: 12px;
+}
+
+.chat-message-right .chat-message-avatar {
+    order: 2;
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+.chat-message-content {
+    max-width: 70%;
+}
+
+.chat-message-text {
+    word-wrap: break-word;
+}
+
+.chat-message-date {
+    font-size: 12px;
+}
+
+/* Chat Input */
+.chat-input-container {
+    background-color: #f8f9fa;
+}
+
+.chat-input-form {
+    display: flex;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.chat-send-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-message {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+    </style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <section id="header" class="wrapper">
+
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lawyer_view_laws' %}">Laws</a></li>
+                <li><a href="{% url 'view_clients' %}">Clients</a></li>
+                <li><a href="{% url 'view_lawyer_profile' %}">profile</a></li>
+                <li><a href="{% url 'lawyer_view_court' %}">Courts</a></li>
+                <li><a href="{% url 'signout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </section>
+
+
+    <!--main-->
+   <main class="content">
+    <div class="container p-0">
+        <h1 class="h3 mb-3">Messages</h1>
+        <div class="card chat-container">
+            <div class="row g-0">
+                <div class="col-12 col-lg-4 col-xl-3 border-right chat-sidebar">
+                    <div class="px-4 d-none d-md-block">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <a class="btn btn-primary mt-4 mb-4" href="#">New Message</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-sidebar-users">
+                        {% for message in messages %}
+                        <a href="{% url 'directs' message.user.username %}" class="list-group-item list-group-item-action border-0 chat-user {% if active_direct == message.user.username %}active{% endif %}">
+                            <div class="chat-user-avatar">
+                                <img src="{{ message.user.profile.image.url }}" class="rounded-circle" alt="img" width="40" height="40">
+                            </div>
+                            <div class="chat-user-info">
+                                <b>{{ message.user.profile.first_name }} {{ message.user.profile.last_name }}</b>
+                                <div class="small"><span class="fas fa-circle chat-online"></span> @{{ message.user.username }}</div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8 col-xl-9 chat-messages-container">
+                    <div class="chat-header d-none d-lg-flex align-items-center py-2 px-4 border-bottom">
+                        <div class="chat-header-content">
+                            <!-- Add your chat header content here -->
+                        </div>
+                        <div class="chat-header-actions">
+                            <!-- Add your chat header actions here -->
+                        </div>
+                    </div>
+                    <div class="chat-messages p-4">
+                        {% for direct in directs %}
+                        <div class="chat-message {% if direct.sender == request.user %}chat-message-right{% else %}chat-message-left{% endif %}">
+                            <div class="chat-message-avatar">
+                                <img src="{{ direct.sender.profile.image.url }}" class="rounded-circle" alt="img" width="40" height="40">
+                            </div>
+                            <div class="chat-message-content">
+                                <div class="chat-message-text bg-light rounded py-2 px-3">
+                                    {{ direct.body }}
+                                </div>
+                                <div class="chat-message-date text-muted small text-nowrap mt-1">{{ direct.date|date:"d M, Y" }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="chat-input-container flex-grow-0 py-3 px-4 border-top">
+                        <form method="POST" action="{% url 'send-directs' %}" class="chat-input-form">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="hidden" name="to_user" id="" value="{{ active_direct }}">
+                                <input name="body" type="text" class="form-control chat-input" placeholder="Type your message">
+                                <button class="btn btn-primary chat-send-btn" type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+    <!-- Footer -->
+    <section id="footer" class="wrapper">
+        <div class="title">Contact Us</div>
+        <div class="container">
+            <header class="style1">
+                <h2>Have questions or feedback?</h2>
+                <p>Feel free to reach out to us. We're here to help!</p>
+            </header>
+            <div class="row">
+                <div class="col-6 col-12-medium">
+                    <!-- Contact Form -->
+                    <section>
+                        <form method="post" action="#">
+                            <div class="row gtr-50">
+                                <div class="col-6 col-12-small">
+                                    <input type="text" name="name" id="contact-name" placeholder="Name"/>
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <input type="text" name="email" id="contact-email" placeholder="Email"/>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" id="contact-message" placeholder="Message"
+                                              rows="4"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="actions">
+                                        <li><input type="submit" class="style1" value="Send"/></li>
+                                        <li><input type="reset" class="style2" value="Reset"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+                <div class="col-6 col-12-medium">
+                    <!-- Contact -->
+                    <section class="feature-list small">
+                        <div class="row">
+                            <div class="col-6 col-12-small">
+                                <section>
+                                    <h3 class="icon solid fa-envelope">Email</h3>
+                                    <p>
+                                        <a href="#">info@legalportal.com</a>
+                                    </p>
+                                </section>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <section>
+                                    <h3 class="icon solid fa-phone">Phone</h3>
+                                    <p>
+                                        (123) 456-7890
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="copyright">
+                <ul>
+                    <li>&copy; Legal Portal.</li>
+                    <li>Design: <a href="">anandhanshine</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

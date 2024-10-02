@@ -1,0 +1,45 @@
+body {
+
+    background-color: #2f333b;
+}
+
+.containercard {
+    max-width: 600px;
+    height:75%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    text-align:center:
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.profile {
+     text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.profile-image {
+    width: 250px;
+    height:auto;
+    border-radius: 50%;
+    margin-bottom:40px;
+    object-fit: cover;
+}
+
+.details h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.details p {
+    margin-bottom: 5px;
+}
+

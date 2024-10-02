@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Legal Portal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleview.css' %}">
+<style>
+.containera-wrapper {
+    display: flex;
+    background-color: #722f37;
+    justify-content: space-between;
+    text-align:center;
+}
+.containera1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the center horizontally */
+    justify-content: flex-start; /* Align items to the start (top) vertically */
+    width: 80%; /* Ensure the container takes up the full width */
+    background-color: #ffffff;
+    border-radius: 10px; /* Rounded rectangle shape */
+}
+
+
+
+
+ .containera3 {
+    flex: 0 0 48%; /* Adjust width of containers */
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.containera1 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+
+.containera3 {
+    margin-right: 10px; /* Adjust space between containers */
+}
+.containera3 p {
+            color: #722F37; /* Set color code */
+            text-align: justify; /* Align text in justified format */
+        }
+.containera1 p {
+    color: #722F37;
+    text-align: Left;
+}
+.containera1 b {
+    color: #000;
+    text-align: Left;
+}
+
+    .courta {
+     text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.courta-image {
+    width: 350px;
+    height:350px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the entire circle */
+}
+
+.detailsa h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Add space between name and other details */
+}
+
+.detailsa p {
+    justify-content;
+    color: #722F37;
+    text-align: center;
+}
+.name-label {
+    color: #722f37;
+}
+
+</style>
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+    <!-- Header -->
+    <section id="header" class="wrapper">
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lawyer_view_laws' %}">Laws</a></li>
+                <li><a href="{% url 'view_clients' %}">Clients</a></li>
+                <li><a href="{% url 'view_lawyer_profile' %}">profile</a></li>
+                <li><a href="{% url 'lawyer_view_court' %}">Courts</a></li>
+                <li><a href="{% url 'signout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+    </section>
+
+
+
+<!--main-->
+
+<section id="intro" class="wrapper style1">
+					<div class="title">Court details</div>
+<div class="containera-wrapper">
+    <center>
+<section class="ftco-section">
+		<div class="container" style="margin-left:100px;">
+<!--			<div class="row justify-content-center">-->
+<!--				<div class="col-md-6 text-center mb-5">-->
+<!--&lt;!&ndash;					<h2 class="heading-section">Clients</h2>&ndash;&gt;-->
+<!--				</div>-->
+<!--			</div>-->
+			{% for c in view_court %}
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+
+						<table class="table table-responsive-xl">
+						  <thead>
+						    <tr>
+						    	<th>&nbsp;</th>
+                                <th>Sl No.</th>
+                                <th>Court image</th>
+						    	<th>Court name</th>
+						      <th>Court Location</th>
+								<th>jurisdiction</th>
+						      <th>noj</th>
+                               <th>year</th>
+                                <th>chiefjustice</th>
+						      <th>&nbsp;</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr class="alert" role="alert">
+						    	<th>&nbsp;</th>
+                                <th>{{forloop.counter}}</th>
+						      <td class="d-flex align-items-center">
+						      	<div class="img" style="background-image: url({{ c.image.url }});"></div>
+						      </td>
+						      <td>{{ c.cname }}</td>
+                                 <td>{{ c.cloc }} </td>
+								<td>{{ c.jurisdiction }} </td>
+                                <td>{{ c.noj }} </td>
+                                <td>{{ c.year }} </td>
+                                <td>{{ c.chiefjustice }} </td>
+						      <th>&nbsp;</th>
+						    </tr>
+						    <tr class="alert" role="alert">
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+        </center>
+</section>
+
+
+
+
+
+    <!-- Footer -->
+
+</div>
+</body>
+</html>
